@@ -4,7 +4,25 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
-const projects = {
+type Technology = {
+    name: string;
+    icon: string;
+};
+
+type Project = {
+    title: string;
+    description: string;
+    link: string;
+    image: string;
+    technologies: Technology[];
+};
+
+type ProjectsType = {
+    pl: Project[];
+    en: Project[];
+};
+
+const projects: ProjectsType = {
     pl: [
         {
             title: 'HeadHunter',
@@ -33,7 +51,7 @@ const projects = {
     en: [
         {
             title: 'HeadHunter',
-            description: 'A project supporting HR in finding job candidates.',
+            description: 'A project supporting HR in finding candidates for jobs.',
             link: 'https://github.com/Brylson123/MegaK-grupa3-frontend',
             image: '/projects/hh.png',
             technologies: [
@@ -57,8 +75,9 @@ const projects = {
     ],
 };
 
-const Projects = () => {
+const Projects: React.FC = () => {
     const { language } = useLanguage();
+    const currentProjects = projects[language as keyof ProjectsType];
 
     return (
         <section
@@ -69,7 +88,7 @@ const Projects = () => {
                 {language === 'pl' ? 'Projekty' : 'Projects'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects[language].map((project, index) => (
+                {currentProjects.map((project, index) => (
                     <motion.div
                         key={index}
                         whileHover={{ scale: 1.05 }}
@@ -82,6 +101,7 @@ const Projects = () => {
                                 fill
                                 style={{ objectFit: 'contain' }}
                                 className="rounded-md"
+                                priority
                             />
                         </div>
                         <div className="p-6">
@@ -102,9 +122,7 @@ const Projects = () => {
                                         width={24}
                                         height={24}
                                     />
-                                    <span className="ml-2">
-                                        {language === 'pl' ? 'Zobacz na GitHub' : 'View on GitHub'}
-                                    </span>
+                                    <span className="ml-2">GitHub</span>
                                 </div>
                             </a>
                             <div className="flex flex-wrap gap-3 mt-4">
