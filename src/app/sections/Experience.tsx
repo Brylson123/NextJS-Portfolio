@@ -4,7 +4,24 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
-const experiences = {
+type Technology = {
+    name: string;
+    icon: string;
+};
+
+type ExperienceData = {
+    company: string;
+    description: string;
+    image: string;
+    technologies: Technology[];
+};
+
+type ExperiencesType = {
+    pl: ExperienceData[];
+    en: ExperienceData[];
+};
+
+const experiences: ExperiencesType = {
     pl: [
         {
             company: 'Krakodlew S.A',
@@ -33,9 +50,9 @@ const experiences = {
     ],
 };
 
-const Experience = () => {
+const Experience: React.FC = () => {
     const { language } = useLanguage();
-    const currentExperiences = experiences[language];
+    const currentExperiences = experiences[language as keyof ExperiencesType];
 
     return (
         <section
