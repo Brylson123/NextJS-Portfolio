@@ -9,19 +9,35 @@ const Header = () => {
         setLanguage(language === 'pl' ? 'en' : 'pl');
     };
 
+    const handleSmoothScroll = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-darkBlue shadow-lg">
             <nav className="flex justify-between items-center p-4">
                 <div className="flex gap-4">
-                    <a href="#about" className="text-white hover:text-vibrantBlue">
+                    <button
+                        onClick={() => handleSmoothScroll('about')}
+                        className="text-white hover:text-vibrantBlue"
+                    >
                         {language === 'pl' ? 'O mnie' : 'About'}
-                    </a>
-                    <a href="#projects" className="text-white hover:text-vibrantBlue">
+                    </button>
+                    <button
+                        onClick={() => handleSmoothScroll('projects')}
+                        className="text-white hover:text-vibrantBlue"
+                    >
                         {language === 'pl' ? 'Projekty' : 'Projects'}
-                    </a>
-                    <a href="#contact" className="text-white hover:text-vibrantBlue">
+                    </button>
+                    <button
+                        onClick={() => handleSmoothScroll('contact')}
+                        className="text-white hover:text-vibrantBlue"
+                    >
                         {language === 'pl' ? 'Kontakt' : 'Contact'}
-                    </a>
+                    </button>
                 </div>
                 <button
                     onClick={toggleLanguage}
