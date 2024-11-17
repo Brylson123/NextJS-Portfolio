@@ -2,42 +2,74 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
-const projects = [
-    {
-        title: 'HeadHunter',
-        description: 'Projekt wspomagający HR w znajdowaniu kandydatów do pracy.',
-        link: 'https://github.com/Brylson123/MegaK-grupa3-frontend',
-        image: '/projects/hh.png',
-        technologies: [
-            { name: 'React', icon: '/tech/reactjs.png' },
-            { name: 'NestJS', icon: '/tech/nestjs.png' },
-            { name: 'TypeScript', icon: '/tech/typescript.png' },
-        ],
-    },
-    {
-        title: 'uClothes',
-        description: 'Aplikacja do tworzenia i zarządzania ofertami sprzedaży.',
-        link: 'https://github.com/Brylson123/NextJS-uChlothes-frontend',
-        image: '/projects/shop.png',
-        technologies: [
-            { name: 'Java', icon: '/tech/java.png' },
-            { name: 'Next.js', icon: '/tech/next.png' },
-            { name: 'PostgreSQL', icon: '/tech/postgresql.png' },
-            { name: 'Spring Boot', icon: '/tech/spring.png' },
-        ],
-    },
-];
+const projects = {
+    pl: [
+        {
+            title: 'HeadHunter',
+            description: 'Projekt wspomagający HR w znajdowaniu kandydatów do pracy.',
+            link: 'https://github.com/Brylson123/MegaK-grupa3-frontend',
+            image: '/projects/hh.png',
+            technologies: [
+                { name: 'React', icon: '/tech/reactjs.png' },
+                { name: 'NestJS', icon: '/tech/nestjs.png' },
+                { name: 'TypeScript', icon: '/tech/typescript.png' },
+            ],
+        },
+        {
+            title: 'uClothes',
+            description: 'Aplikacja do tworzenia i zarządzania ofertami sprzedaży.',
+            link: 'https://github.com/Brylson123/NextJS-uChlothes-frontend',
+            image: '/projects/shop.png',
+            technologies: [
+                { name: 'Java', icon: '/tech/java.png' },
+                { name: 'Next.js', icon: '/tech/next.png' },
+                { name: 'PostgreSQL', icon: '/tech/postgresql.png' },
+                { name: 'Spring Boot', icon: '/tech/spring.png' },
+            ],
+        },
+    ],
+    en: [
+        {
+            title: 'HeadHunter',
+            description: 'A project supporting HR in finding job candidates.',
+            link: 'https://github.com/Brylson123/MegaK-grupa3-frontend',
+            image: '/projects/hh.png',
+            technologies: [
+                { name: 'React', icon: '/tech/reactjs.png' },
+                { name: 'NestJS', icon: '/tech/nestjs.png' },
+                { name: 'TypeScript', icon: '/tech/typescript.png' },
+            ],
+        },
+        {
+            title: 'uClothes',
+            description: 'An application for creating and managing sales offers.',
+            link: 'https://github.com/Brylson123/NextJS-uChlothes-frontend',
+            image: '/projects/shop.png',
+            technologies: [
+                { name: 'Java', icon: '/tech/java.png' },
+                { name: 'Next.js', icon: '/tech/next.png' },
+                { name: 'PostgreSQL', icon: '/tech/postgresql.png' },
+                { name: 'Spring Boot', icon: '/tech/spring.png' },
+            ],
+        },
+    ],
+};
 
 const Projects = () => {
+    const { language } = useLanguage();
+
     return (
         <section
             id="projects"
             className="py-12 px-4 lg:px-20 bg-gradient-to-b from-darkBlue to-gray-800"
         >
-            <h2 className="text-3xl text-lightGray text-center mb-8">Projekty</h2>
+            <h2 className="text-3xl text-lightGray text-center mb-8">
+                {language === 'pl' ? 'Projekty' : 'Projects'}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects.map((project, index) => (
+                {projects[language].map((project, index) => (
                     <motion.div
                         key={index}
                         whileHover={{ scale: 1.05 }}
@@ -48,7 +80,7 @@ const Projects = () => {
                                 src={project.image}
                                 alt={project.title}
                                 fill
-                                style={{ objectFit: "contain" }}
+                                style={{ objectFit: 'contain' }}
                                 className="rounded-md"
                             />
                         </div>
@@ -70,7 +102,9 @@ const Projects = () => {
                                         width={24}
                                         height={24}
                                     />
-                                    <span className="ml-2">Zobacz na GitHub</span>
+                                    <span className="ml-2">
+                                        {language === 'pl' ? 'Zobacz na GitHub' : 'View on GitHub'}
+                                    </span>
                                 </div>
                             </a>
                             <div className="flex flex-wrap gap-3 mt-4">

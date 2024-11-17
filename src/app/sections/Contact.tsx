@@ -22,6 +22,8 @@ const Contact = () => {
         },
     };
 
+    type LanguageKeys = 'pl' | 'en';
+
     return (
         <section
             id="contact"
@@ -29,17 +31,17 @@ const Contact = () => {
         >
             <div className="text-center">
                 <h2 className="text-3xl text-cyan-400 font-bold mb-6">
-                    {content[language].title}
+                    {content[language as LanguageKeys].title}
                 </h2>
                 <p className="text-lightGray mb-4">
-                    {content[language].description}
+                    {content[language as LanguageKeys].description}
                 </p>
                 <div className="mt-6">
                     <a
-                        href={`mailto:${content[language].email}`}
+                        href={`mailto:${content[language as LanguageKeys].email}`}
                         className="text-cyan-300 underline hover:text-cyan-500"
                     >
-                        {content[language].email}
+                        {content[language as LanguageKeys].email}
                     </a>
                     <br />
                     <a
@@ -48,7 +50,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        {content[language].linkedin}
+                        {content[language as LanguageKeys].linkedin}
                     </a>
                 </div>
             </div>
