@@ -43,7 +43,7 @@ const projects: ProjectsType = {
             technologies: [
                 { name: 'Java', icon: '/tech/java.png' },
                 { name: 'Next.js', icon: '/tech/next.png' },
-                { name: 'PostgreSQL', icon: '/tech/postgresql.png' },
+                { name: 'MySQL', icon: '/tech/mysql.png' },
                 { name: 'Spring Boot', icon: '/tech/spring.png' },
             ],
         },
@@ -68,7 +68,7 @@ const projects: ProjectsType = {
             technologies: [
                 { name: 'Java', icon: '/tech/java.png' },
                 { name: 'Next.js', icon: '/tech/next.png' },
-                { name: 'PostgreSQL', icon: '/tech/postgresql.png' },
+                { name: 'MySQL', icon: '/tech/mysql.png' },
                 { name: 'Spring Boot', icon: '/tech/spring.png' },
             ],
         },
