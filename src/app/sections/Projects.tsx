@@ -72,7 +72,7 @@ const Projects = () => {
                                         width={24}
                                         height={24}
                                     />
-                                    <span className="ml-2">Zobacz na GitHub</span>
+                                    <span className="ml-2">GitHub</span>
                                 </div>
                             </a>
                             {project.demoLink && (
